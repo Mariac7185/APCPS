@@ -51,8 +51,8 @@
         var test = document.getElementById('test');
         function selectQuestion(){
             switch(document.getElementById('dropDown').value){
-                case 'volumeQuestions': test.value.innerHTML = 'Volume...'; break;
-                default: test.value.innerHTML = 'Select something!';
+                case 'volumeQuestions': test.innerHTML = 'Volume...'; break;
+                default: test.innerHTML = 'Select something!';
             }
         }
       </script>
