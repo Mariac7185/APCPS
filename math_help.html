@@ -38,23 +38,222 @@
             </div>
         </div>
     </nav>
-      <h2 class='center'>Here you can hone your math skills for the SATs. Choose a topic!</h2>
-        <select id='dropDown'>
-            <option value='none'>Choose a question type!</option>
-            <option value='volumeQuestions'>Volume Questions </option>
-        </select>
-        <button type='button' onClick='selectQuestion()'>Begin Training!</button>
-        <p id='test'></p>
+		<h2 class='center'>Here you can hone your skills on finding volume and area. Choose a topic!</h2>
+		<h3 class='center'>Reference Table</h3>
+		<h5 class='center'>(Use 3.14 in place of pi)</h5>
+		<div class='center'><img src='referenceTable.png' width='100%'></div>
+		<div>
+			<select id='dropDown'>
+				<option value='none'>Choose a question type!</option>
+				<option value='areaQuestions'>Area Questions</option>
+				<option value='volumeQuestions'>Volume Questions</option>
+			</select>
+			<button type='button' onClick='selectQuestion()'>Select!</button>
+			<br>
+			<select id ='dropDown2' style='visibility: hidden;'>
+				<option>Choose a type of question!</option>
+				<option id='option1'></option>
+				<option id='option2'></option>
+				<option id='option3'></option>
+				<option id='option4'></option>
+				<option id='option5'></option>
+			</select>
+			<button id='button2' style='visibility: hidden;' onClick='question()'>Start!</button>
+			<br>
+			<h4 id='question' style='visibility: hidden;'>Sample Text</h4>
+			<p id='pAnswer' style='visibility: hidden;'>Answer:</p>
+			<input id='userAnswer' style='visibility: hidden;'><span id='unit' style='visibility: hidden;'></span><button id='userButton' type='button' onclick='compareAnswers()' style='visibility: hidden;'>Check</button>
+			<h4 id='correct' style='visibility: hidden;'></h4>
+			<br>
+		</div>
         
       <script>
-        // http://blog.prepscholar.com/whats-actually-tested-on-sat-math-topics
-        var test = document.getElementById('test');
+        var pTest = document.getElementById('test');
+		var base;
+		var height;
+		var shapes = ['circle','rectangle','triangle'];
+		var shapes3d = ['box','cylinder','sphere','cone','pyramid'];
+		var answer;
+		var round = ' Round to the nearest hundreth.';
+		var squared = ' meters squared.';
+		var cubed = ' meters cubed.';
+		var unit;
         function selectQuestion(){
+			document.getElementById('dropDown2').style.visibility='visible';
+			document.getElementById('button2').style.visibility='visible';
             switch(document.getElementById('dropDown').value){
-                case 'volumeQuestions': test.innerHTML = 'Volume...'; break;
-                default: test.innerHTML = 'Select something!';
+				case 'areaQuestions': areaOptions(); unit = 'squared'; break;
+                case 'volumeQuestions': volumeOptions(); unit = 'cubed'; break;
+                default: console.log("something's wrong...");
             }
         }
+		
+		function pyramid(){
+			var l = randomNumber(20);
+			var w = randomNumber(20);
+			var h = randomNumber(20);
+			var rawAnswer = l*w*h*(1/3);
+			document.getElementById('question').innerHTML = 'What is the volume of a pyramid with a length of ' + l + ' meters, a width of ' + w + ' meters and a height of ' + h + ' meters?' + round;
+			clipAnswer(rawAnswer);
+		}
+		
+		function cone(){
+			var r = randomNumber(5);
+			var h = randomNumber(20);
+			var rawAnswer = r*r*h*3.14*(1/3);
+			document.getElementById('question').innerHTML = 'What is the volume of a cone with a radius of ' + r + ' meters and a height of ' + h + ' meters?' + round;
+			clipAnswer(rawAnswer);
+		}
+		
+		function sphere(){
+			var r = randomNumber(7);
+			var rawAnswer = r*r*r*3.14*(4/3);
+			document.getElementById('question').innerHTML = 'What is the volume of a sphere with a radius of ' + r + ' meters?' + round;
+			clipAnswer(rawAnswer);
+		}
+		
+		function cylinder(){
+			var r = randomNumber(5);
+			var h = randomNumber(15);
+			var rawAnswer = r*r*h*3.14;
+			document.getElementById('question').innerHTML = 'What is the volume of a cylinder with a radius of ' + r + ' meters and a height of ' + h + ' meters?' + round;
+			clipAnswer(rawAnswer);
+		}
+		
+		function box(){
+			var l = randomNumber(20);
+			var w = randomNumber(20);
+			var h = randomNumber(20);
+			var rawAnswer = l*w*h;
+			document.getElementById('question').innerHTML = 'What is the volume of a box with a length of ' + l + ' meters, a width of ' + w + ' meters and a height of ' + h + ' meters?' + round;
+			clipAnswer(rawAnswer);
+		}
+		
+		function triangle(){
+			var h = randomNumber(20);
+			var b = randomNumber(20);
+			var rawAnswer = .5*b*h;
+			document.getElementById('question').innerHTML = 'What is the area of a triangle with a base of ' + b + ' meters and a height of ' + h + ' meters?' + round;
+			clipAnswer(rawAnswer);
+		}
+		
+		function rectangle(){
+			var l = randomNumber(20);
+			var w = randomNumber(20);
+			var rawAnswer = (l*w);
+			document.getElementById('question').innerHTML = 'What is the area of a rectangle with a length of ' + l + ' meters and a width of ' + w + ' meters?' + round;
+			clipAnswer(rawAnswer);
+		}
+		
+		function circle(){
+			var r = randomNumber(12);
+			var rawAnswer = (r*r)*(3.14);
+			document.getElementById('question').innerHTML = 'What is the area of a circle, in meters squared, with a radius of ' + r + ' meters?' + round;
+			clipAnswer(rawAnswer);
+		}
+		
+		function randomNumber(maxNumber){
+			var i = Math.floor((Math.random()*100)+1);
+			while(i > maxNumber){
+				i = Math.floor((Math.random()*100)+1);
+			}
+			return i;
+		}
+		
+		function compareAnswers(){
+			document.getElementById('correct').style.visibility='visible';
+			if(answer==document.getElementById('userAnswer').value){
+				document.getElementById('correct').innerHTML = "You are correct!";
+			}else{
+			    if(unit=='squared'){
+			        document.getElementById('correct').innerHTML = "You are incorrect. The correct answer is: " + answer + squared;
+			    }else{
+			        document.getElementById('correct').innerHTML = "You are incorrect. The correct answer is: " + answer + cubed;
+			    }
+			}
+		}
+		
+		function clipAnswer(tempAnswer){
+			var tempString;
+			var tempArray = [];
+			var tempArray2 = [];
+			tempArray = tempAnswer.toString().split('.');
+			if(tempArray.length>1){
+				tempArray2 = tempArray[1].split('');
+				for(var i = 0; i < tempArray2.length;i++){
+					tempArray2[i] = Number(tempArray2[i]);
+				}
+				switch(tempArray2[2]){
+					case 0:
+					case 1:
+					case 2:
+					case 3:
+					case 4: break;
+					case 5:
+					case 6:
+					case 7:
+					case 8:
+					case 9: tempArray2[1] += 1; tempArray2[2] = 0; if(tempArray2[1]==10){tempArray2[0] += 1; tempArray2[1] = 0;} if(tempArray2[0]==10){tempArray[0] = Number(tempArray[0]) + 1; tempArray2[0] = 0;} break;
+					case undefined: break;
+					default: console.log("something's wrong...");
+				}
+				if(tempArray2[1] == 0 || tempArray2[1] == undefined){
+					if(tempArray2[0] == 0 || tempArray2[0] == undefined){
+						answer = tempArray[0];
+					}
+					answer = tempArray[0] + '.' + tempArray2[0].toString();
+				}else{
+					answer = tempArray[0] + '.' + tempArray2[0].toString() + tempArray2[1].toString();
+				}
+			}else{
+				answer = tempAnswer;
+			}
+		}
+		
+		function question(){
+			document.getElementById('question').style.visibility='visible';
+			document.getElementById('pAnswer').style.visibility='visible';
+			document.getElementById('userAnswer').style.visibility='visible';
+			document.getElementById('userButton').style.visibility='visible';
+			document.getElementById('unit').style.visibility='visible';
+			document.getElementById('correct').style.visibility='hidden';
+			switch(document.getElementById('dropDown2').value){
+				case 'circle': circle(); break;
+				case 'rectangle': rectangle(); break;
+				case 'triangle': triangle(); break;
+				case 'box': box(); break;
+				case 'cylinder': cylinder(); break;
+				case 'sphere': sphere(); break;
+				case 'cone': cone(); break;
+				case 'pyramid': pyramid(); break;
+				default: console.log("something's wrong...");
+			}
+		}
+		
+		function areaOptions(){
+			document.getElementById('unit').innerHTML = squared;
+			var x;
+			for(var i=0; i<5; i++){
+				x = 'option' + (i+1).toString();
+				if(i<3){
+					document.getElementById(x).innerHTML=shapes[i];
+					document.getElementById(x).value=shapes[i];
+				}else{
+					document.getElementById(x).style.display='none';
+				}
+			}
+		}
+		
+		function volumeOptions(){
+			document.getElementById('unit').innerHTML = cubed;
+			var x;
+			for(var i=0;i<5;i++){
+				x = 'option' + (i+1).toString();
+				document.getElementById(x).innerHTML=shapes3d[i];
+				document.getElementById(x).value=shapes3d[i];
+				document.getElementById(x).style.display='inline';
+			}
+		}
       </script>
   </body>
 </html>
