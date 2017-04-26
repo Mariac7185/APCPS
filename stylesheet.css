@@ -5,6 +5,13 @@
     text-align: center;
 }
 
+.hidden{
+	visibility: hidden;
+}
+.visible{
+	visibility: visible;
+}
+
 body{
     background-color:rgb(189,222,227);
 }
@@ -21,4 +28,15 @@ h1{
 }
 h2{
     font-size: 29px;
+}
+h3{
+	font-size: 22px;
+	font-weight: bold;
+}
+p{
+	font-size: 16px;
+}
+div{
+	margin: auto;
+	width: 90%;
 }
