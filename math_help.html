@@ -61,7 +61,7 @@
 			<button id='button2' style='visibility: hidden;' onClick='question()'>Start!</button>
 			<br>
 			<h4 id='question' style='visibility: hidden;'>Sample Text</h4>
-			<p id='pAnswer' style='visibility: hidden;'>Answer:</p>
+			<span id='pAnswer' style='visibility: hidden;'>Answer:</span>
 			<input id='userAnswer' style='visibility: hidden;'><span id='unit' style='visibility: hidden;'></span><button id='userButton' type='button' onclick='compareAnswers()' style='visibility: hidden;'>Check</button>
 			<h4 id='correct' style='visibility: hidden;'></h4>
 			<br>
@@ -207,23 +207,26 @@
 		}
 		
 		function question(){
+			switch(document.getElementById('dropDown2').value){
+				case 'circle': showQuestion(); circle(); break;
+				case 'rectangle': showQuestion(); rectangle(); break;
+				case 'triangle': showQuestion(); triangle(); break;
+				case 'box': showQuestion(); box(); break;
+				case 'cylinder': showQuestion(); cylinder(); break;
+				case 'sphere': showQuestion(); sphere(); break;
+				case 'cone': showQuestion(); cone(); break;
+				case 'pyramid': showQuestion(); pyramid(); break;
+				default: document.getElementById('question').style.visibility='visible'; document.getElementById('question').innerHTML = 'Choose a shape!';
+			}
+		}
+		
+		function showQuestion(){
 			document.getElementById('question').style.visibility='visible';
 			document.getElementById('pAnswer').style.visibility='visible';
 			document.getElementById('userAnswer').style.visibility='visible';
 			document.getElementById('userButton').style.visibility='visible';
 			document.getElementById('unit').style.visibility='visible';
 			document.getElementById('correct').style.visibility='hidden';
-			switch(document.getElementById('dropDown2').value){
-				case 'circle': circle(); break;
-				case 'rectangle': rectangle(); break;
-				case 'triangle': triangle(); break;
-				case 'box': box(); break;
-				case 'cylinder': cylinder(); break;
-				case 'sphere': sphere(); break;
-				case 'cone': cone(); break;
-				case 'pyramid': pyramid(); break;
-				default: console.log("something's wrong...");
-			}
 		}
 		
 		function areaOptions(){
