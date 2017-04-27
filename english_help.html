@@ -99,12 +99,28 @@
    <input type="radio" name="answers" value="C3"> C. without mediation.</option> <br>
    <input type="radio" name="answers" value="D3"> D. with precision. </option> <br>
    </FORM>
-   
-   
-  <br>
-   
-
+<br>
  </h3>
+ <button id='button2' style='visibility: hidden;' onClick='question()'>Start!</button>
+			<br>
+			<h4 id='question' style='visibility: hidden;'>Sample Text</h4>
+			<p id='pAnswer' style='visibility: hidden;'>Answer:</p>
+			<input id='userAnswer' style='visibility: hidden;'><span id='unit' style='visibility: hidden;'></span><button id='userButton' type='button' onclick='compareAnswers()' style='visibility: hidden;'>Check</button>
+			<h4 id='correct' style='visibility: hidden;'></h4>
+			<br>
+ <script>
+     	function compareAnswers(){
+			document.getElementById('correct').style.visibility='visible';
+			if(answer==document.getElementById('userAnswer').value){
+				document.getElementById('correct').innerHTML = "You are correct!";
+			}
+			else{
+			        document.getElementById('correct').innerHTML = "You are incorrect. The correct answer is: " + answer + squared;
+			 
+			}
+		}
+		
+ </script>
 
 </body>
 
