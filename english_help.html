@@ -105,6 +105,22 @@
    
 
  </h3>
+ 
+ <script>
+     	function compareAnswers(){
+			document.getElementById('correct').style.visibility='visible';
+			if(answer==document.getElementById('userAnswer').value){
+				document.getElementById('correct').innerHTML = "You are correct!";
+			}else{
+			    if(unit=='squared'){
+			        document.getElementById('correct').innerHTML = "You are incorrect. The correct answer is: " + answer + squared;
+			    }else{
+			        document.getElementById('correct').innerHTML = "You are incorrect. The correct answer is: " + answer + cubed;
+			    }
+			}
+		}
+		
+ </script>
 
 </body>
 
