@@ -19,7 +19,9 @@
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
+   
  }
+ .button5 {border-radius: 50% ;}
 </style>
 <body>
  <h1 class='center'>English Prep!</h1>
@@ -83,46 +85,42 @@
   </article>
 
   <h3>
-   Question 1 <br> Which choice best describes what happens in the passage? Please choose from one of the following options.
+   <u>Question 1</u><br> Which choice best describes what happens in the passage? Please choose from one of the following options.
    <br>
-   <form>
+   <br>
     <input type="radio" name="answers" value="A1" checked> A. One character argues with another character who intrudes on her home. <br>
     <input type="radio" name="answers" value="B1">B. One character receives a surprising request from another character.
     <BR>
     <input type="radio" name="answers" value="C1">C. One character reminisces about choices she has made over the years.<br>
     <input type="radio" name="answers" value="D1">D. One character criticizes another character for pursuing an unexpected course of action.<br>
-   
-<button>Check</button>
+ <button class="button button5" onClick='selectQuestion()'>Check!</button>   
 
+			<br>
 
-   </form>
-
-   <br> Question 2 <br> Which choice best describes the developmental pattern of the passage? Please choose from one of the following options.<br>
-
-   <FORM>
+   <br> <u> Question 2</u> <br> Which choice best describes the developmental pattern of the passage? Please choose from one of the following options.<br>
+  <br>
     <input type="radio" name="answers" value="A2"> A. A careful analysis of a traditional practice<br>
     <input type="radio" name="answers" value="B2"> B. A detailed depiction of a meaningful encounter<br>
     <input type="radio" name="answers" value="C2"> C. A definitive response to a series of questions <br>
     <input type="radio" name="answers" value="D2"> D. A cheerful recounting of an amusing anecdote<br>
- <button>Check</button>
+  <button class="button button5" onClick='selectQuestion()'>Check!</button>
 
-  </FORM>
-  
+			<br>
+
+
    <br>
-   Question 3 <br>
+   <u>Question 3 </u> <br>
    As used in line 1 (“directly,”) and line 57 (“directly”) , “directly” most nearly means Please choose from one of the following options.<br>
-   
-<FORM>
+   <br>
    <input type="radio" name="answers" value="A3" > A. frankly. </option> <br>
    <input type="radio" name="answers" value="B3"> B. confidently.</option> <br>
    <input type="radio" name="answers" value="C3"> C. without mediation.</option> <br>
    <input type="radio" name="answers" value="D3"> D. with precision. </option> <br>
-<button>Check</button>
+ <button  class="button button5" onClick='selectQuestion()'>Check!</button>
 
 
-   </FORM>
+  
 <br>
-
 
 
  </h3>
@@ -136,19 +134,12 @@
 			
 			
 			
-  <!-- <script>
-     	//function compareAnswers(){
-			document.getElementById('correct').style.visibility='visible';
-			if(answer==document.getElementById('userAnswer').value){
-				document.getElementById('correct').innerHTML = "You are correct!";
-			}
-			else{
-			        document.getElementById('correct').innerHTML = "You are incorrect. The correct answer is: " + answer + squared;
-			 
-			}
-		}
-	
-< /script>-->
+ <script>
+function selectQuestion() {
+ document.getElementById("demo").innerHTML=Answer();
+}
+</script>
+
 
 </body>
 
