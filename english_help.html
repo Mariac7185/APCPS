@@ -7,7 +7,20 @@
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
  <link rel="stylesheet" href="stylesheet.css" type="text/css">
 </head>
-
+<style>
+ .button{
+ background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+ }
+</style>
 <body>
  <h1 class='center'>English Prep!</h1>
  <nav class="navbar navbar-default">
@@ -78,6 +91,10 @@
     <BR>
     <input type="radio" name="answers" value="C1">C. One character reminisces about choices she has made over the years.<br>
     <input type="radio" name="answers" value="D1">D. One character criticizes another character for pursuing an unexpected course of action.<br>
+   
+<button>Check</button>
+
+
    </form>
 
    <br> Question 2 <br> Which choice best describes the developmental pattern of the passage? Please choose from one of the following options.<br>
@@ -87,6 +104,8 @@
     <input type="radio" name="answers" value="B2"> B. A detailed depiction of a meaningful encounter<br>
     <input type="radio" name="answers" value="C2"> C. A definitive response to a series of questions <br>
     <input type="radio" name="answers" value="D2"> D. A cheerful recounting of an amusing anecdote<br>
+ <button>Check</button>
+
   </FORM>
   
    <br>
@@ -98,8 +117,14 @@
    <input type="radio" name="answers" value="B3"> B. confidently.</option> <br>
    <input type="radio" name="answers" value="C3"> C. without mediation.</option> <br>
    <input type="radio" name="answers" value="D3"> D. with precision. </option> <br>
+<button>Check</button>
+
+
    </FORM>
 <br>
+
+
+
  </h3>
  <button id='button2' style='visibility: hidden;' onClick='question()'>Start!</button>
 			<br>
@@ -108,8 +133,11 @@
 			<input id='userAnswer' style='visibility: hidden;'><span id='unit' style='visibility: hidden;'></span><button id='userButton' type='button' onclick='compareAnswers()' style='visibility: hidden;'>Check</button>
 			<h4 id='correct' style='visibility: hidden;'></h4>
 			<br>
- <script>
-     	function compareAnswers(){
+			
+			
+			
+  <!-- <script>
+     	//function compareAnswers(){
 			document.getElementById('correct').style.visibility='visible';
 			if(answer==document.getElementById('userAnswer').value){
 				document.getElementById('correct').innerHTML = "You are correct!";
@@ -119,8 +147,8 @@
 			 
 			}
 		}
-		
- </script>
+	
+< /script>-->
 
 </body>
 
